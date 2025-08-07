@@ -1,0 +1,198 @@
+/* -------------------------------------------------------------------------- */
+/*                                   Resets                                   */
+/* -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a,
+a:hover,
+a:visited {
+  color: unset;
+  text-decoration: unset;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Variables                                 */
+/* -------------------------------------------------------------------------- */
+
+:root {
+  --main-space: 2.5rem;
+  --title-space: 1.5rem;
+
+  --white: hsl(0, 0%, 94%);
+  --black: hsl(0, 0%, 5%);
+  --lighten-multiplier: 1;
+
+  --text-main: var(--primary-60);
+  --black-elevated: hsl(from var(--black) h s calc(l + 5));
+  --black-elevated-2: hsl(from var(--black) h s calc(l + 20));
+
+  /* ---------------------------- primary color fades ---------------------------- */
+  --main: hsl(265, 100%, 62%);
+  --primary-00: hsl(from var(--main) h s calc(l - 60));
+  --primary-10: hsl(from var(--main) h s calc(l - 45));
+  --primary-20: hsl(from var(--main) h s calc(l - 35));
+  --primary-30: hsl(from var(--main) h s calc(l - 25));
+  --primary-40: hsl(from var(--main) h s calc(l - 15));
+  --primary-50: hsl(from var(--main) h s l);
+  --primary-60: hsl(from var(--main) h s calc(l + 8));
+  --primary-70: hsl(from var(--main) h s calc(l + 15));
+  --primary-80: hsl(from var(--main) h s calc(l + 20));
+  --primary-90: hsl(from var(--main) h s calc(l + 25));
+  --primary-99: hsl(from var(--main) h s calc(l + 35));
+
+  --transition: 0.3s;
+
+  --normal-shadow: 0px 4px 12px 0px rgba(6, 31, 34, 0.1);
+  --hover-shadow: 0px 8px 24px 0px rgba(6, 31, 34, 0.3);
+
+  background: var(--black);
+  color: var(--white);
+  font-family: "Mozilla Headline";
+  scroll-behavior: smooth;
+
+  &[theme="light"] {
+    --white: hsl(0, 0%, 5%);
+    --black: hsl(0, 0%, 99%);
+    --lighten-multiplier: -1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Utils                                   */
+/* -------------------------------------------------------------------------- */
+
+/* NOTE:
+    The Below Container component is written 
+    Based on Bootstrap container element and
+    is not written by me.
+*/
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.main_Space {
+  margin-bottom: var(--main-space);
+}
+
+.title_Space {
+  margin-bottom: var(--title-space);
+}
+
+/* ---------------------------- Scroll animation ---------------------------- */
+
+@keyframes fadeFromTop {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scrollFade {
+  transform: translateY(calc(-1 * var(--title-space)));
+  opacity: 0;
+}
+
+.scrlDoAnim {
+  animation: fadeFromTop calc(var(--transition) * 2) forwards;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Components                                 */
+/* -------------------------------------------------------------------------- */
+
+.button_Primary,
+.button_Secondary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--button-back);
+  color: var(--button-accent) !important;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: var(--transition);
+  border: 1px solid var(--button-border, transparent);
+  cursor: pointer;
+}
+
+:is(.button_Primary, .button_Secondary):hover {
+  background-color: hsl(
+    from var(--button-back) h s calc(l * (1 + 0.1 * var(--lighten-multiplier)))
+  );
+}
+
+.button_Primary {
+  --button-back: var(--primary-50);
+  --button-accent: var(--black);
+}
+
+.button_Secondary {
+  --button-back: var(--primary-99);
+  --button-accent: var(--white);
+  --button-border: var(--primary-50);
+}
+
+.section__Title {
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.section__Title::before {
+  content: "";
+  width: 1.5rem;
+  height: 2px;
+  background-color: var(--white);
+}
+
+.line-limit {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: var(--line-limit, 1);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

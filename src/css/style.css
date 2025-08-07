@@ -1,0 +1,529 @@
+main {
+  min-height: calc(100vh - 135px - 68px);
+  min-height: calc(100dvh - 135px - 68px);
+}
+
+/* *------------------------------- Header Start ------------------------------- */
+
+header {
+  padding-block: 1rem;
+  background: var(--black);
+  box-shadow: 0px 0px 40px hsl(from var(--primary-50) h s l / 50%);
+
+  z-index: 500;
+  position: sticky;
+  top: 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__Logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header__Logo h1 {
+  font-size: 1.5rem;
+}
+
+.header_Menu li a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transform: translateY(2px);
+}
+.header_Menu li span {
+  color: var(--primary-30);
+}
+
+.header_Menu li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background-color: var(--white);
+  transition: var(--transition);
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.header_Menu li a:hover::after {
+  width: 100%;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.header_Menu {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  list-style: none;
+}
+
+@media (max-width: 576px) {
+  .header_Menu {
+    display: none;
+  }
+}
+
+/* !------------------------------- Header End --------------------------------- */
+
+/* *------------------------------- Hero Start ------------------------------- */
+
+.hero_wrapper {
+  height: 80vh;
+}
+
+.hero__content_wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+@media (max-width: 992px) {
+  .hero__content_wrapper {
+    width: 100%;
+  }
+}
+
+.hero__Button_Wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  a{
+    white-space: nowrap;
+  }
+}
+
+.hero__Title {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+
+  mark{
+    background-color: var(--primary-80);
+    padding-inline: 0.25rem;
+  }
+
+}
+
+/* right Side */
+
+.hero__cards_Outer {
+  position: absolute;
+  width: 30vw;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 0;
+  /* pointer-events: none; */
+}
+
+.hero__cards_wrapper {
+  columns: 7vw;
+  row-gap: 1rem;
+  transform: translate(5%, -50%) rotate(-30deg);
+}
+
+.hero__cards_wrapper img {
+  width: 100%;
+  animation: fadeFromTop calc(2 * var(--transition)) forwards calc(var(--appendIndex) * 0.02s);
+  transform: translateY(calc(-1 * var(--title-space)));
+  opacity: 0;
+  box-shadow: var(--normal-shadow);
+}
+
+@keyframes fadeFromTop {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero__cards_Outer {
+    width: 50vw;
+  }
+
+  .hero__cards_wrapper {
+    width: 100%;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 75px), 1fr));
+  }
+}
+
+/* !------------------------------- Hero End --------------------------------- */
+
+/* *------------------------------- Songs list Start ------------------------------- */
+
+.songs__Cards_Wrapper {
+  display: grid;
+  grid-auto-flow: dense;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+}
+
+.song__Card {
+  padding-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  transition: var(--transition);
+  background-color: var(--black-elevated-1);
+  box-shadow: var(--normal-shadow);
+  background-color: hsl(from var(--white) h s 100);
+}
+
+.song__Card:hover {
+  /* border-color: hsl(from var(--white) h s calc(l - 50)); */
+  background-color: var(--black-elevated-2);
+  box-shadow: var(--hover-shadow);
+  z-index: 100;
+}
+
+.song__Card_Image {
+  width: fit-content;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.songCrad__Top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  padding-inline: 0.75rem;
+}
+.songCard__Artist {
+  color: var(--primary-40);
+  font-size: 0.75rem;
+  padding-inline: 0.75rem;
+}
+/* !------------------------------- Songs list End --------------------------------- */
+
+/* *------------------------------- Footer Start ------------------------------- */
+
+footer {
+  padding-block: var(--main-space) 1rem;
+  border-top: solid 1px var(--primary-80);
+  background-color: white;
+
+  .copyright {
+    font-size: 0.75rem;
+    text-align: center;
+    a {
+      color: var(--primary-50);
+    }
+  }
+}
+
+.footer__Inner {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer__Newsletter_Wrapper {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .footer__letter_Inputs {
+      display: flex;
+      gap: 0.5rem;
+
+      label {
+        cursor: pointer;
+      }
+
+      input[type="email"] {
+        padding: 0.5rem 1.25rem;
+        border: none;
+        outline: none;
+        font-family: inherit;
+        border: solid 1px var(--primary-50);
+        transition: var(--transition);
+
+        &:focus {
+          box-shadow: var(--normal-shadow);
+        }
+      }
+    }
+  }
+}
+
+/* !------------------------------- Footer End --------------------------------- */
+
+/* *------------------------------- Request Page Start ------------------------------- */
+
+main#reqPage {
+  padding-top: calc(2 * var(--main-space));
+}
+
+form.request__From {
+  border: solid 2px var(--primary-50);
+  box-shadow: var(--hover-shadow);
+  padding: 1rem;
+  max-width: 600px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black);
+  gap: 1rem;
+
+  .input__Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    label a {
+      color: var(--primary-50);
+      text-decoration: underline;
+    }
+
+    &.multi__Work_wrapper {
+      display: grid;
+      gap: 0.75rem;
+
+      .work__Input_Wrapper {
+        display: flex;
+        white-space: nowrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .sample__Work_Add,
+      .remove__work_Button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary-90);
+        color: var(--primary-40);
+        font-weight: 800;
+        font-family: serif;
+        font-size: 2rem;
+        padding-block: 0.25rem;
+        order: 1000;
+        transition: calc(var(--transition) / 2);
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+          background-color: var(--primary-80);
+        }
+        &:active {
+          background-color: var(--primary-60);
+        }
+      }
+
+      .remove__work_Button {
+        aspect-ratio: 1;
+        height: 100%;
+
+        --red: rgb(255, 88, 88);
+
+        --primary-40: hsl(from var(--red) h s calc(l - 15));
+        --primary-60: hsl(from var(--red) h s calc(l + 8));
+        --primary-80: hsl(from var(--red) h s calc(l + 20));
+        --primary-90: hsl(from var(--red) h s calc(l + 25));
+      }
+    }
+
+    :is(input, select, textarea):not([role="button"]) {
+      padding: 0.5rem 0.75rem;
+      width: 100%;
+      outline: unset;
+      background-color: var(--black);
+      border: solid 1px var(--white);
+      color: var(--white);
+      font-family: inherit;
+      transition: var(--transition);
+
+      &:active,
+      &:focus {
+        border-color: black;
+        border-width: 1px;
+        box-shadow: var(--normal-shadow);
+      }
+
+      &:is(textarea) {
+        height: 150px;
+      }
+    }
+
+    &.buttons_Wrapper {
+      flex-direction: row;
+      gap: 0.75rem;
+      input {
+        flex: 1;
+      }
+    }
+
+    &.checkbox {
+      flex-direction: row;
+      gap: 0.75rem;
+      align-items: center;
+      input {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      /* Styles for the checkbox below was Added from UIverse website By https://uiverse.io/profile/lenin55  */
+      .cl-checkbox {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* Input */
+      .cl-checkbox > input {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        z-index: -1;
+        position: absolute;
+        left: -10px;
+        top: -8px;
+        display: block;
+        margin: 0;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary-80);
+        box-shadow: none;
+        outline: none;
+        opacity: 0;
+        transform: scale(1);
+        pointer-events: none;
+        transition:
+          opacity 0.3s,
+          transform 0.2s;
+      }
+
+      /* Span */
+      .cl-checkbox > span {
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      /* Box */
+      .cl-checkbox > span::before {
+        content: "";
+        display: inline-block;
+        box-sizing: border-box;
+        margin: 3px 11px 3px 1px;
+        border: solid 2px;
+        /* Safari */
+        border-color: var(--primary-80);
+        border-radius: 2px;
+        width: 18px;
+        height: 18px;
+        vertical-align: top;
+        transition:
+          border-color 0.2s,
+          background-color 0.2s;
+      }
+
+      /* Checkmark */
+      .cl-checkbox > span::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 4px;
+        left: 2px;
+        width: 10px;
+        height: 5px;
+        border: solid 2px transparent;
+        border-right: none;
+        border-top: none;
+        transform: translate(3px, 4px) rotate(-45deg);
+      }
+
+      /* Checked, Indeterminate */
+      .cl-checkbox > input:checked,
+      .cl-checkbox > input:indeterminate {
+        background-color: var(--primary-50);
+      }
+
+      .cl-checkbox > input:checked + span::before,
+      .cl-checkbox > input:indeterminate + span::before {
+        border-color: var(--primary-50);
+        background-color: var(--primary-50);
+      }
+
+      .cl-checkbox > input:checked + span::after,
+      .cl-checkbox > input:indeterminate + span::after {
+        border-color: var(--black);
+      }
+
+      .cl-checkbox > input:indeterminate + span::after {
+        border-left: none;
+        transform: translate(4px, 3px);
+      }
+
+      /* Hover, Focus */
+      .cl-checkbox:hover > input {
+        opacity: 0.04;
+      }
+
+      .cl-checkbox > input:focus {
+        opacity: 0.12;
+      }
+
+      .cl-checkbox:hover > input:focus {
+        opacity: 0.16;
+      }
+
+      /* Active */
+      .cl-checkbox > input:active {
+        opacity: 1;
+        transform: scale(0);
+        transition:
+          transform 0s,
+          opacity 0s;
+      }
+
+      .cl-checkbox > input:active + span::before {
+        border-color: var(--primary-70);
+      }
+
+      .cl-checkbox > input:checked:active + span::before {
+        border-color: transparent;
+        background-color: var(--primary-80);
+      }
+
+      /* Disabled */
+      .cl-checkbox > input:disabled {
+        opacity: 0;
+      }
+
+      .cl-checkbox > input:disabled + span {
+        color: var(--primary-90);
+        cursor: initial;
+      }
+
+      .cl-checkbox > input:disabled + span::before {
+        border-color: currentColor;
+      }
+
+      .cl-checkbox > input:checked:disabled + span::before,
+      .cl-checkbox > input:indeterminate:disabled + span::before {
+        border-color: transparent;
+        background-color: currentColor;
+      }
+    }
+  }
+}
+
+/* !------------------------------- Request Page End --------------------------------- */

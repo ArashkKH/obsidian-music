@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Artist</title>
+    <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/backAnim.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&display=swap");
+    </style>
+  </head>
+
+  <body>
+		<div class="backRain"></div>
+		<header>
+			<div class="container">
+				<div class="header_Logo_Wrapper">
+					<a href="/" class="header__Logo">
+						<figure>
+							<img src="../asset/logo.svg" alt="obsidian music" width="32px" />
+						</figure>
+						<h1>Obsidian Music</h1>
+					</a>
+				</div>
+				<ul class="header_Menu">
+					<li class="header_Menu_Item"><a href="../index.html">Home</a></li>
+					<li class="header_Menu_Item"><a href="../index.html#songs">Songs</a></li>
+					<li class="header_Menu_Item"><span>Request an Artist</span></li>
+				</ul>
+			</div>
+		</header>
+		<main id="reqPage">
+			<section class="container">
+				<h2 class="title_Space scrollFade">Request an Artist</h2>
+				<p class="main_Space scrollFade">
+					in the form below you can request for your favourite artist to be added to
+					Obsidian
+				</p>
+				<form
+					class="request__From main_Space scrollFade"
+					action="https://httpbin.org/post"
+					method="post">
+					<div class="input__Wrapper">
+						<label for="requestName">Artist Name:</label>
+						<input type="text" name="artist name" id="requestName" required />
+					</div>
+
+					<div class="input__Wrapper">
+						<label for="requestGenre">Music Genre:</label>
+						<input
+							list="requestGenre-lits"
+							name="Music Genre"
+							id="requestGenre"
+							required />
+						<datalist id="requestGenre-lits">
+							<option value="Rock"></option>
+							<option value="Pop"></option>
+							<option value="Jazz"></option>
+							<option value="Metal"></option>
+							<option value="Hip Hop"></option>
+							<option value="Electronic"></option>
+							<option value="Blues"></option>
+							<option value="Country"></option>
+							<option value="Reggae"></option>
+							<option value="Classical"></option>
+						</datalist>
+					</div>
+
+					<div class="input__Wrapper">
+						<label for="socialUrls">Social Media URLs (separated by commas):</label>
+						<input
+							type="url"
+							id="socialUrls"
+							name="socialUrls"
+							placeholder="https://twitter.com/artist, https://instagram.com/artist"
+							pattern="https?://.+"
+							required />
+					</div>
+
+					<div class="input__Wrapper multi__Work_wrapper">
+						<span>Songs and Videos:</span>
+
+						<span class="sample__Work_Add"> + </span>
+					</div>
+
+					<div class="input__Wrapper checkbox">
+						<label for="requestExplisit"
+							>Does this artist works contain
+							<a
+								href="https://en.wikipedia.org/wiki/Parental_Advisory"
+								target="_blank"
+								>Explicit lyrics</a
+							>:</label
+						>
+						<label class="cl-checkbox">
+							<input
+								type="checkbox"
+								name="explicit Lyrics"
+								id="requestExplisit" />
+							<span></span>
+						</label>
+					</div>
+					<div class="input__Wrapper">
+						<label for="requestDesc"
+							>Tell us why you are interested in this artist:</label
+						>
+						<textarea name="interest Description" id="requestDesc"></textarea>
+					</div>
+
+					<div class="input__Wrapper buttons_Wrapper">
+						<input role="button" class="button_Primary" type="submit" value="Submit" />
+						<input role="button" class="button_Secondary" type="reset" value="Reset" />
+					</div>
+				</form>
+			</section>
+		</main>
+		<footer>
+			<section class="container footer__Inner main_Space">
+				<div class="footer__Logo_Wrapper">
+					<a href="/" class="header__Logo">
+						<figure>
+							<img src="../asset/logo.svg" alt="obsidian music" width="32px" />
+						</figure>
+						<p>Obsidian Music</p>
+					</a>
+				</div>
+
+				<div class="footer__Newsletter_Wrapper">
+					<form action="https://httpbin.org/post" method="post">
+						<label for="LetterEmail">Join our newsletter:</label>
+						<div class="footer__letter_Inputs">
+							<input
+								type="email"
+								name="email"
+								id="LetterEmail"
+								placeholder="sample@somemail.com"
+								required />
+							<input
+								role="button"
+								class="button_Primary"
+								type="submit"
+								value="Join" />
+						</div>
+					</form>
+				</div>
+			</section>
+
+			<section class="copyright container">
+				All rights reserved &copy;
+				<a target="_blank" href="https://github.com/arashkkh">Arash Kh</a> - 2025
+			</section>
+		</footer>
+	</body>
+
+  <script src="../js/reqForm.js"></script>
+  <script src="../js/utils/scrollAnimation.js"></script>
+</html>
